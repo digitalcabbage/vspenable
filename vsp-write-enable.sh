@@ -72,6 +72,7 @@ EOF
 #
 check_dependencies() {
 	local deps=(
+		bc
 		od
 		lsscsi
 		blockdev
