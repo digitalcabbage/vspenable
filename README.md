@@ -5,6 +5,9 @@ The information on this page may render drives unusable and irretrievably destro
 
 It is assumed that you are running a vanilla Linux installation, the drives are attached via an LSI SAS card that is in IT mode, so not RAID controllers and expanders are permissible. They must have only a single connection i.e., no multipathing, so disconnect any secondary connection. You will need to install the sg3_utils package in particular. The script checks everything it needs is installed before attempting to do anything. The script, however, works on the latest [SystemRescue](https://www.system-rescue.org/) (formerly known as SystemRescueCd) so you don't need a machine with Linux installed, just the ability to boot a live CD/USB.
 
+It is assumed that you are running the script as root.
+
+
 Introduction
 ------------
 
@@ -96,5 +99,16 @@ where
       - SS for SAS drives
       - NC for NVMe drives
 
-Because my sample size is limited, this is likely incomplete. For example I suspect that if you had drives from really old VSP systems, there would have been an interface code for Fibre Channel drives. There are also likely to be other letters for the manufacturers, both historic and current. There is also presumably a device type for 3DWD/mixed use drives.
+Because my sample size is limited, this is likely incomplete. For example I suspect that if you had drives from really old VSP systems, there would have been an interface code for Fibre Channel drives. There are also likely to be other letters for the manufacturers, both historic and current. There is also presumably a device type for 3DWD/mixed use drives. A partial table of model codes for Seagate drives is
 
+| Code | Model series |
+|------|--------------|
+| C | Constellation |
+| D | Constellation ES.3 |
+| E | Savvio 10K.6 |
+| F | Constellation ES.4 |
+| G | Constellation ES.5 |
+| H | Enterprise Performance 10K.8 |
+| K | Exos X14 |
+| N | Exos X16 |
+| O | Exos X18 |
