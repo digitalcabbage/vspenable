@@ -217,6 +217,13 @@ vsp_write_enable() {
 
 
 # main logic
+
+# only run if root
+if (( EUID != 0 )); then
+	echo "This script must be run as root" >&2
+	exit 1
+fi
+
 check_dependencies
 
 # a very basic test to see if the drives are multipathed 
