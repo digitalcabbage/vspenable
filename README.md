@@ -3,7 +3,7 @@ VSP Enable
 
 The information on this page may render drives unusable and irretrievably destroy data. I accept no liability for bricked drives or destroyed data under any circumstances.
 
-It is assumed that you are running a vanilla Linux installation, the drives are attached via an LSI SAS card that is in IT mode, so not RAID controllers and expanders are permissible. They must have only a single connection i.e., no multipathing, so disconnect any secondary connection. You will need to install the sg3_utils package in particular. The script checks everything it needs is installed before attempting to do anything. The script, however, works on the latest [SystemRescue](https://www.system-rescue.org/) (formerly known as SystemRescueCd) so you don't need a machine with Linux installed, just the ability to boot a live CD/USB.
+It is assumed that you are running a vanilla Linux installation, the drives are attached via an LSI SAS card that is in IT mode, so no RAID controllers but expanders are permissible. They must have only a single connection i.e., no multipathing, so disconnect any secondary connection. You will need to install the sg3_utils package in particular. The script checks everything it needs is installed before attempting to do anything. The script, however, works on the latest [SystemRescue](https://www.system-rescue.org/) (formerly known as SystemRescueCd) so you don't need a machine with Linux installed, just the ability to boot a live CD/USB.
 
 It is assumed that you are running the script as root.
 
