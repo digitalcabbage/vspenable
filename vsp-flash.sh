@@ -239,7 +239,7 @@ flash_drive() {
 
 	if [[ -n "$file" ]]; then
 		echo "sg_write_buffer -v --mode=dmc_save --in=$file $device"
-#		sg_write_buffer -v --mode=dmc_save --in="$file" "$device"
+		sg_write_buffer -v --mode=dmc_save --in="$file" "$device"
 	else
 		echo "No firmware file defined for $model" >&2
 		return 1
