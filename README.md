@@ -22,13 +22,16 @@ Flashing the drives
 
 There are two ways to fix this second problem. The first is to flash the drive with a more standard firmware. I have had success with older Seagate drives and generic Seagate firmware. Unfortunately, newer Seagate drives (anything with a SAS-3/12Gbps or better interface) and all HGST drives appear to be cryptographically vendor-locked. If you can flash generic firmware this is the preferred method for making the drives usable.
 
-The following is a list of Seagate drives taken from a VSP that I have been able to flash with generic Seagate firmware. The serial numbers have been gleaned from eBay photos and are valid for downloading the firmware from the [Seagate website](https://www.seagate.com/gb/en/support/downloads/) There will be other combinations that will work but I have very limited access to different SAS-2 Seagate drive models from VSP systems. If anyone has other model/serial number combinations to share, message me and I will update the table.
+The following is a list of Seagate drives taken from a VSP that are known to be possible to be easily flashed with generic Seagate firmware. The serial numbers were gleaned from eBay photos and are valid for downloading the firmware from the [Seagate website](https://www.seagate.com/gb/en/support/downloads/) There will be other combinations that will work but I have very limited access to different SAS-2 Seagate drive models from VSP systems. If anyone has other model/serial number combinations to share, message me and I will update the table.
 
 | Model        | Serial   |
 |--------------|----------|
-| ST9900805SS  | 6XS2BPEC |
-| ST900MM0006  | S0N1WQH7 |
+| ST3000NM0023 | Z1Y0JJ5J |
 | ST4000NM0023 | Z1Z8CLYA |
+| ST900MM0006  | S0N1WQH7 |
+| ST9900805SS  | 6XS2BPEC |
+
+The script vsp-flash.sh can be used to format all the VSP drives on your system to a standard block size and then flash all the drives it can to a generic firmware. You will need to power cycle the drives for them to show up with the new firmware after flashing them. Note the script has a -r option to reload the SAS driver which saves rebooting them but that will only work if the OS drives is not connected to the SAS controller and you are using an LSI based SAS controller. I use a special machine for "processing" drives and the boot drive is SATA. Theoretically you should be able to send a reset to the drive but I could never get that to work, though I didn't try hard. For me this is of historical interest as I don't have any drives left I can flash.
 
 A "Russian" person online can overcome these locks for a fee. His requirements are a Remote Desktop connection on a Windows 7 32-bit machine, which is sketchy as hell in 2026. Since Russia's full-scale invasion of Ukraine in 2022, transferring money to Russia is increasingly difficult and not a viable option for many people. I can't get this through my workplace procurement for example.
 
@@ -99,7 +102,7 @@ where
       - SS for SAS drives
       - NC for NVMe drives
 
-Because my sample size is limited, this is likely incomplete. For example I suspect that if you had drives from really old VSP systems, there would have been an interface code for Fibre Channel drives. There are also likely to be other letters for the manufacturers, both historic and current. There is also presumably a device type for 3DWD/mixed use drives. A partial table of model codes for Seagate drives is
+Because my sample size is limited, this is likely incomplete. For example I suspect that if you had drives from a USP (predated the VSP) system, there would have been an interface code for Fibre Channel drives. There are also likely to be other letters for the manufacturers, both historic and current. There is also presumably a device type for 3DWD/mixed use drives. A partial table of model codes for Seagate drives is
 
 | Code | Model series |
 |------|--------------|
