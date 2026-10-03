@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Written by digitalcabbage (last update 2026-10-01)
+# Written by digitalcabbage (last update 2026-10-03)
 #
 # This is free and unencumbered software released into the public domain.
 #
@@ -77,8 +77,8 @@ check_dependencies() {
 		lsscsi
 		blockdev
 		sg_modes
-		sg_wr_mode
 		sg_format
+		sg_wr_mode
 		smartctl
 	)
 
@@ -120,7 +120,7 @@ is_vsp() {
 	# test product identifier string length
 	[[ ${#model} -eq 12 ]] || return 1
  
-	# test with one big regex (not we don't check the capacity field is valid)
+	# test with one big regex (note we don't check the capacity field is valid)
 	[[ "$model" =~ ^DK[RS][25][A-Z]-[HJK]...SS$ ]] || return 1
  
 	 return 0
@@ -173,6 +173,11 @@ test_drive() {
 		fi
 	done < <(smartctl --info --health --attributes "$device" 2>/dev/null)
 
+	# trim Seagate serial numbers to match the label
+	if [[ $vendor == "SEAGATE" ]]; then
+		serial=${serial:0:8}
+	fi
+
 	local block=$(blockdev --getpbsz "$device" 2>/dev/null)
 	local size=$(blockdev --getsize64 "$device" 2>/dev/null)
 
@@ -182,7 +187,7 @@ test_drive() {
 		local capacity=$(printf "%.2f GiB" "$(echo "$size / 1073741824" | bc -l)")
 	fi
 
-	# only print health info if there is an issue
+	# print health info if requested or there is an issue
 	if [[ $option == "-T" || "$health" != "OK" || ${defect:-0} -gt 0 ]]; then
 		echo -e "$device\t$vendor\t$product\t$serial\t$block\t$capacity\t$defect\t$health"
 	fi
@@ -241,10 +246,9 @@ case "$option" in
 		print_help
 		exit 0
 		;;
-	-t)
+	-t|-T)
 		echo -e "DEVICE\t\tVENDOR\tMODEL\t\tSERIAL NO\tBLOCK\tCAPACITY\tREALLOCATED\tHEALTH"
-		;;
-		
+		;;		
 esac
 
 # loop through the drives on the system
@@ -274,10 +278,7 @@ while read -r line; do
 		-f)
 			format_drive "$device"
 			;;
-		-t)
-			test_drive "$device"
-			;;
-		-T)
+		-t|-T)
 			test_drive "$device"
 			;;
 		*)
@@ -285,3 +286,5 @@ while read -r line; do
 			;;
 	esac
 done < <(lsscsi)
+
+exit 0
