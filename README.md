@@ -39,6 +39,9 @@ If you want to go down this route, the following web page has links to the servi
 
 https://disk.yandex.ru/d/FEXpvFoGJlccmg
 
+As of 2026-10-12 the documentation is unavailable to view due to Ukrainian strikes on Yandex data centres.
+
+
 Mode page 0x38
 --------------
 
