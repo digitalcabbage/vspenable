@@ -115,6 +115,7 @@ Because my sample size is limited, this is likely incomplete. For example I susp
 | F | Constellation ES.4 |
 | G | Constellation ES.5 |
 | H | Enterprise Performance 10K.8 |
+| J | Exos X10 |
 | K | Exos X14 |
 | N | Exos X16 |
 | O | Exos X18 |
