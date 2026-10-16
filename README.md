@@ -39,7 +39,7 @@ If you want to go down this route, the following web page has links to the servi
 
 https://disk.yandex.ru/d/FEXpvFoGJlccmg
 
-As of 2026-10-12 the documentation is unavailable to view due to Ukrainian strikes on Yandex data centres.
+As of 2026-10-12 the documentation is at times unavailable to view due to Ukrainian strikes on Yandex data centres.
 
 
 Mode page 0x38
@@ -105,7 +105,7 @@ where
       - SS for SAS drives
       - NC for NVMe drives
 
-Because my sample size is limited, this is likely incomplete. For example I suspect that if you had drives from a USP (predated the VSP) system, there would have been an interface code for Fibre Channel drives. There are also likely to be other letters for the manufacturers, both historic and current. There is also presumably a device type for 3DWD/mixed use drives. A partial table of model codes for Seagate drives is
+Because my sample size is limited, this is likely incomplete. For example I suspect that if you had drives from a USP (the forerunner of the VSP) system, there would have been an interface code for Fibre Channel drives. There are also likely to be other letters for the manufacturers, both historic and current. Presumably there is a device type for 3DWD/mixed use drives as well. An incomplete table of model codes for Seagate drives is
 
 | Code | Model series |
 |------|--------------|
